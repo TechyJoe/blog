@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Blog</h1>
+    </header>
+    <nav>
+        <a href="{% url 'post_list' %}">Home</a>
+        <a href="{% url 'post_create' %}">Create Post</a>
+    </nav>
+    <div class="container">
+        <h2>Blog Posts</h2>
+        <ul>
+            {% for post in posts %}
+            <li><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>
